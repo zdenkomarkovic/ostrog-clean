@@ -26,10 +26,12 @@ import { HoverCard, HoverCardTrigger, HoverCardContent } from "./ui/hover-card";
 
 const mobTitleStyles = "text-lg py-2";
 
-const MobileMenu = () => (
+const MobileMenu = ({ scrolled }: { scrolled: boolean }) => (
   <Sheet>
     <SheetTrigger className="lg:hidden">
-      <MenuIcon className="text-primary cursor-pointer" />
+      <MenuIcon
+        className={`cursor-pointer transition-colors ${scrolled ? "text-primary" : "text-white"}`}
+      />
     </SheetTrigger>
     <SheetContent>
       <SheetHeader>
@@ -42,27 +44,21 @@ const MobileMenu = () => (
                   <Fragment key={index}>
                     <Accordion type="single" collapsible>
                       <AccordionItem className="border-none" value="item-1">
-                        <motion.div
-                          whileHover={{ color: "hsl(var(--primary))" }}
-                        >
+                        <div className="hover:text-primary transition-colors">
                           <AccordionTrigger
                             className={`${mobTitleStyles} hover:no-underline`}
                           >
                             {item.title}
                           </AccordionTrigger>
-                        </motion.div>
+                        </div>
                         <AccordionContent>
                           {item.list.map((link, index2) => (
                             <Link
-                              className="pl-6 block font-light py-2"
+                              className="pl-6 block font-light py-2 hover:text-primary transition-colors"
                               key={`${index}.${index2}`}
                               href={link.link}
                             >
-                              <motion.li
-                                whileHover={{ color: "hsl(var(--primary))" }}
-                              >
-                                {link.title}
-                              </motion.li>
+                              <li>{link.title}</li>
                             </Link>
                           ))}
                         </AccordionContent>
@@ -72,12 +68,9 @@ const MobileMenu = () => (
                 );
               return (
                 <Link key={index} href={item.link}>
-                  <motion.li
-                    whileHover={{ color: "hsl(var(--primary))" }}
-                    className={mobTitleStyles}
-                  >
+                  <li className={`${mobTitleStyles} hover:text-primary transition-colors`}>
                     <SheetTrigger>{item.title}</SheetTrigger>
-                  </motion.li>
+                  </li>
                 </Link>
               );
             })}
@@ -88,46 +81,45 @@ const MobileMenu = () => (
   </Sheet>
 );
 
-const DesktopNav = () => (
-  <ul className="hidden gap-8 lg:flex  text-xl">
+const DesktopNav = ({ scrolled }: { scrolled: boolean }) => (
+  <ul className="hidden gap-8 lg:flex text-xl">
     {navList.map((item, index) => {
       if (item.list)
         return (
           <HoverCard key={index} openDelay={0} closeDelay={50}>
             <HoverCardTrigger>
-              <motion.div
-                whileHover={{ color: "hsl(var(--primary))", scale: 1.1 }}
-                className="flex gap-1 transition-colors"
+              <div
+                className={`flex gap-1 transition-all hover:scale-110 cursor-pointer ${
+                  scrolled ? "text-primary hover:text-primary/80" : "text-white hover:text-white/80"
+                }`}
               >
                 {item.title}
                 <ChevronDownIcon className="w-[18px]" />
-              </motion.div>
+              </div>
             </HoverCardTrigger>
             <HoverCardContent className="p-0">
               {item.list.map((link, index2) => (
-                <motion.li
+                <li
                   key={`${index}.${index2}`}
-                  whileHover={{
-                    backgroundColor: "hsl(var(--primary))",
-                    color: "hsl(var(--primary-foreground))",
-                  }}
+                  className="hover:bg-primary hover:text-primary-foreground transition-colors"
                 >
                   <Link className="px-2 py-2 block" href={link.link}>
                     {link.title}
                   </Link>
-                </motion.li>
+                </li>
               ))}
             </HoverCardContent>
           </HoverCard>
         );
       return (
         <Link key={index} href={item.link}>
-          <motion.li
-            className="transition-colors underline-animation"
-            whileHover={{ color: "hsl(var(--primary))", scale: 1.1 }}
+          <li
+            className={`transition-all hover:scale-110 ${
+              scrolled ? "text-primary hover:text-primary/80" : "text-white hover:text-white/80"
+            }`}
           >
             {item.title}
-          </motion.li>
+          </li>
         </Link>
       );
     })}
@@ -156,9 +148,9 @@ export default function Header() {
         scrolled
           ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-md"
           : "bg-transparent"
-      }  fixed top-0 left-0 right-0 z-[10] transition-colors`}
+      } fixed top-0 left-0 right-0 z-[10] transition-colors`}
     >
-      <nav className="flex items-center justify-between px-8 py-4 max-w-[80rem] w-full text-primary font-bold">
+      <nav className="flex items-center justify-between px-8 py-4 max-w-[80rem] w-full font-bold">
         <Link href="/" className="">
           <Image
             src={Logo}
@@ -168,20 +160,20 @@ export default function Header() {
             className="rounded-full"
           />
         </Link>
-        <DesktopNav />
-        <Link href="tel:+3816">
-          <motion.button
-            whileHover={{
-              color: "hsl(var(--foreground))",
-              backgroundColor: "hsl(var(--primary))",
-            }}
-            className=" items-center justify-center rounded-full text-primary border-primary border-2 text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 transition-colors flex"
+        <DesktopNav scrolled={scrolled} />
+        <Link href="tel:+381621474347" className="hidden lg:block">
+          <button
+            className={`${
+              scrolled
+                ? "text-primary border-primary hover:bg-primary hover:text-primary-foreground"
+                : "text-white border-white hover:bg-white hover:text-primary"
+            } items-center justify-center rounded-full border-2 text-sm md:text-lg py-1 px-2 md:py-2 md:px-4 transition-all flex gap-2`}
           >
-            <PhoneIcon />
-            <p className="">+38160 000 000</p>
-          </motion.button>
+            <PhoneIcon className="w-5 h-5" />
+            <p>062 147 4347</p>
+          </button>
         </Link>
-        <MobileMenu />
+        <MobileMenu scrolled={scrolled} />
       </nav>
     </header>
   );
