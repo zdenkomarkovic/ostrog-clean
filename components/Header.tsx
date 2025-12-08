@@ -13,7 +13,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { motion } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 import { navList } from "@/constants/index";
 import {
@@ -30,7 +29,9 @@ const MobileMenu = ({ scrolled }: { scrolled: boolean }) => (
   <Sheet>
     <SheetTrigger className="lg:hidden">
       <MenuIcon
-        className={`cursor-pointer transition-colors ${scrolled ? "text-primary" : "text-white"}`}
+        className={`cursor-pointer transition-colors ${
+          scrolled ? "text-primary" : "text-white"
+        }`}
       />
     </SheetTrigger>
     <SheetContent>
@@ -68,7 +69,9 @@ const MobileMenu = ({ scrolled }: { scrolled: boolean }) => (
                 );
               return (
                 <Link key={index} href={item.link}>
-                  <li className={`${mobTitleStyles} hover:text-primary transition-colors`}>
+                  <li
+                    className={`${mobTitleStyles} hover:text-primary transition-colors`}
+                  >
                     <SheetTrigger>{item.title}</SheetTrigger>
                   </li>
                 </Link>
@@ -90,7 +93,9 @@ const DesktopNav = ({ scrolled }: { scrolled: boolean }) => (
             <HoverCardTrigger>
               <div
                 className={`flex gap-1 transition-all hover:scale-110 cursor-pointer ${
-                  scrolled ? "text-primary hover:text-primary/80" : "text-white hover:text-white/80"
+                  scrolled
+                    ? "text-primary hover:text-primary/80"
+                    : "text-white hover:text-white/80"
                 }`}
               >
                 {item.title}
@@ -115,7 +120,9 @@ const DesktopNav = ({ scrolled }: { scrolled: boolean }) => (
         <Link key={index} href={item.link}>
           <li
             className={`transition-all hover:scale-110 ${
-              scrolled ? "text-primary hover:text-primary/80" : "text-white hover:text-white/80"
+              scrolled
+                ? "text-primary hover:text-primary/80"
+                : "text-white hover:text-white/80"
             }`}
           >
             {item.title}

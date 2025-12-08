@@ -99,12 +99,14 @@ export default function Testimonials() {
                   </div>
                 </div>
                 <CardDescription className="text-base leading-relaxed text-foreground">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="border-t pt-4">
-                  <p className="font-bold text-foreground">{testimonial.name}</p>
+                  <p className="font-bold text-foreground">
+                    {testimonial.name}
+                  </p>
                   <p className="text-sm text-muted-foreground">
                     {testimonial.position}
                   </p>

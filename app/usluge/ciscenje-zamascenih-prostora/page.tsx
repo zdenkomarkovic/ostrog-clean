@@ -163,7 +163,7 @@ export default function CiscenjeZamascenihProstora() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base leading-relaxed">
-                    Ekstremne temperature "peku" masnoću na površinama.
+                    Ekstremne temperature peku masnoću na površinama.
                     Specijalizovana sredstva prodiru u zagorele naslage i
                     rastvaraju ih bez oštećenja. Za unutrašnjost rerni koristimo
                     parne čistače koji kombinuju visoku temperaturu sa

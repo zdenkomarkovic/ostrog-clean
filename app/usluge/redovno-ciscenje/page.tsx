@@ -9,7 +9,6 @@ import {
   UtensilsCrossed,
   Home,
   SprayCanIcon,
-  Users,
   ClipboardCheck,
   Leaf,
   Calendar,
