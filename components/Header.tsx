@@ -59,7 +59,9 @@ const MobileMenu = ({ scrolled }: { scrolled: boolean }) => (
                               key={`${index}.${index2}`}
                               href={link.link}
                             >
-                              <li>{link.title}</li>
+                              <SheetTrigger asChild>
+                                <li>{link.title}</li>
+                              </SheetTrigger>
                             </Link>
                           ))}
                         </AccordionContent>
