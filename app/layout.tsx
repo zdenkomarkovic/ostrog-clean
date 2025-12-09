@@ -17,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Ostrog Clean - Profesionalno Čišćenje i Održavanje Objekata",
-  description: "Profesionalne usluge čišćenja poslovnih prostora, stanova, restorana i kafića. Redovno čišćenje, pranje stakala, dubinsko čišćenje nameštaja. Pozovite 062 147 4347",
+  description:
+    "Profesionalne usluge čišćenja poslovnih prostora, stanova, restorana i kafića. Redovno čišćenje, pranje stakala, dubinsko čišćenje nameštaja. Pozovite 062 147 4347",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -40,14 +41,15 @@ export const metadata: Metadata = {
     "redovno održavanje",
     "čišćenje nakon renoviranja",
     "alpinističko pranje stakala",
-    "Ostrog Clean"
+    "Ostrog Clean",
   ],
   alternates: {
-    canonical: "https://www.ostrogclean.rs/",
+    canonical: "https://www.ciscenje-beograd.rs/",
   },
   openGraph: {
     title: "Ostrog Clean - Profesionalno Čišćenje",
-    description: "Profesionalne usluge čišćenja i održavanja objekata. Specijalizovani za poslovne prostore, restorane i kafići.",
+    description:
+      "Profesionalne usluge čišćenja i održavanja objekata. Specijalizovani za poslovne prostore, restorane i kafići.",
     type: "website",
     locale: "sr_RS",
   },
